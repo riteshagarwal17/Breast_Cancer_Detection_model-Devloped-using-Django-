@@ -1,0 +1,91 @@
+{% extends 'headerPage.html' %}
+
+    {% block content%}
+    <h2>Check Type of your <span style="background-color: #D7BDE2">Cancer</span> Instantly</h2>
+    <h3>Please enter details:</h3>
+    <br>
+    {%  if scoreval == False  %}
+            {{ continue }}
+    {% else %}
+            <form method="post" enctype="multipart/form-data" action="prediction">
+
+    {% endif%}
+
+ {% csrf_token %}
+
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="p1" class="col-md-2 control-label"  style="margin-top: 1%">Clump_thickness</label>
+    <div class="col-md-4">
+      <input type="number" step="any" class="form-control" id="p1" name="p1"  style="margin-top: 1%" min="1" max="10" placeholder="Please enter any numerical value in range 1-10" required value={{dataset.0.0}}>
+    </div>
+
+
+    <label for="p2" class="col-md-2 control-label" style="margin-top: 1%">Uniform_cell_size</label>
+    <div class="col-md-4">
+      <input type="number" step="any" class="form-control" id="p2" name="p2" style="margin-top: 1%" min="1" max="10" placeholder="Please enter any numerical value in range 1-10" required value={{dataset.0.1}}>
+    </div>
+  </div>
+    <div class="form-group">
+    <label for="p3" class="col-md-2 control-label" style="margin-top: 1%">Uniform_cell_shape</label>
+    <div class="col-md-4">
+      <input type="number" step="any" class="form-control" id="p3" name="p3" style="margin-top: 1%" min="1" max="10" placeholder="Please enter any numerical value in range 1-10" required value={{dataset.0.2}}>
+    </div>
+
+    <label for="p4" class="col-md-2 control-label" style="margin-top: 1%">Marginal_adhesion</label>
+    <div class="col-md-4">
+      <input type="number" step="any" class="form-control" id="p4" name="p4" style="margin-top: 1%" min="1" max="10" placeholder="Please enter any numerical value in range 1-10" required value={{dataset.0.3}}>
+    </div>
+    </div>
+    <div class="form-group">
+    <label for="p5" class="col-md-2 control-label" style="margin-top: 1%">Single_epithelial_size</label>
+    <div class="col-md-4">
+      <input type="number" step="any" class="form-control" id="p5" name="p5" style="margin-top: 1%" min="1" max="10" placeholder="Please enter any numerical value in range 1-10" required value={{dataset.0.4}}>
+    </div>
+    <label for="p6" class="col-md-2 control-label" style="margin-top: 1%">Bare_nuclei</label>
+    <div class="col-md-4">
+      <input type="number" step="any" class="form-control" id="p6" name="p6" style="margin-top: 1%" min="1" max="10" placeholder="Please enter any numerical value in range 1-10" required value={{dataset.0.5}}>
+    </div>
+    </div>
+        <div class="form-group">
+    <label for="p7" class="col-md-2 control-label" style="margin-top: 1%">Bland_chromatin</label>
+    <div class="col-md-4">
+      <input type="number" step="any" class="form-control" id="p7" name="p7" style="margin-top: 1%" min="1" max="10" placeholder="Please enter any numerical value in range 1-10" required value={{dataset.0.6}}>
+    </div>
+    <label for="p8" class="col-md-2 control-label" style="margin-top: 1%">Normal_nucleoli</label>
+    <div class="col-md-4">
+      <input type="number" step="any" class="form-control" id="p8" name="p8" style="margin-top: 1%" min="1" max="10" placeholder="Please enter any numerical value in range 1-10" required value={{dataset.0.7}}>
+    </div>
+    </div>
+                    <div class="form-group">
+    <label for="p9" class="col-md-2 control-label" style="margin-top: 1%">Mitoses</label>
+    <div class="col-md-4">
+      <input type="number" step="any" class="form-control" id="p9" name="p9" style="margin-top: 1%" min="1" max="10" placeholder="Please enter any numerical value in range 1-10" required value={{dataset.0.8}}>
+    </div>
+  </div>
+    <br><br><br><br><br><br><br><br>
+  <div class="form-group">
+      {%  if scoreval  %}
+      <div class="alert alert-danger" role="alert" style="margin-top: 5%">
+          <h3>The Cancer Type is
+              <span class="label label-info" style="margin-left: 1%">{{scoreval}}</span>
+          </h3>
+            </div>
+            <input type="hidden" id="lname" name="bcdVal" value={{scoreval}}>
+            <br><br>
+            <div class="col-md-offset-2 col-md-10">
+                <a href="/"  button type="submit" class="btn btn-success btn-lg" style="margin-top: 1%">Want to Check Again??</button></a>
+            </div>
+      {% else%}
+            <div class="col-md-offset-3 col-md-9">
+                <button type="submit" class="btn btn-success btn-lg" style="margin-top: 3%">Check</button>
+            </div>
+      {% endif %}
+  </div>
+</form>
+
+</form>
+<br>
+
+
+{% endblock %}

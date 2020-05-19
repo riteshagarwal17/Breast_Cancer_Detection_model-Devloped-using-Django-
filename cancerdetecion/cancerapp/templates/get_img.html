@@ -1,0 +1,20 @@
+{% extends 'headerPage.html' %}
+
+    {% block content%}
+<h1>You reached here</h1>
+<h2>Hope,You have seen what you want to..</h2>
+{%  if model == 0  %}
+<h3>Basically, when the observed values in dataset are equally spread across the plot then we can say that our data is uniformly distributed. Also, if there is no point of data far separated from other data points then we can say that our data has no outliers.
+So, in our model, we have plotted a pairplot of our dataset from which we can get to know that our data is uniformly distributed.
+</h3>
+{% elif model == 1 %}
+<h3>Unbalanced Dataset is a scenario where number of data points belonging to one class is much larger than the other class. In this case, our predictive model can be biased and inaccurate.
+So, in our case we have checked balance of our dataset by plotting number of target attributes in each data packet. We have 3 data packets, one is of target attributes of full data, other is of target attributes used to train the model and last is of target attributes we get in testing the model.
+In data packet of full data, we have target attributes in ratio 236:213 whereas in data packet of target attributes which is used to train the model, we have ratio of 169:145 and in data packet of target attributes used to test the model, the ratio is 68:67.
+After seeing above ratios, we can say that our data is completely balanced.
+</h3>
+    {% endif%}
+<div class="col-md-offset-3 col-md-9">
+                <a href="/" button type="Check" class="btn btn-success btn-lg" style="margin-top: 3%">Go Back</a>
+            </div>
+{% endblock %}
